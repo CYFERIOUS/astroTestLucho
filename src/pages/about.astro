@@ -1,0 +1,56 @@
+---
+import Layout from '../layouts/Layout.astro';
+import '../styles/global.css';
+const datos = "Lucho";
+const identity = {
+  firstName: "Sarah",
+  country: "Canada",
+  occupation: "Technical Writer",
+  hobbies: ["photography", "birdwatching", "baseball"],
+};
+
+const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "Writing Docs"];
+
+const happy = true;
+const finished = false;
+const goal = 3;
+
+const skillColor = "red";
+
+---
+
+
+<Layout title="Welcome to About.">
+<h1>Astro</h1>
+<h1>My Astro Site con lucho</h1>
+<ul>
+    <li>My name is {identity.firstName}.</li>
+    <li>I live in {identity.country} and I work as a {identity.occupation}.</li>
+    {identity.hobbies.length >= 2 &&
+      <li>Two of my hobbies are: {identity.hobbies[0]} and {identity.hobbies[1]}</li>
+    }
+  </ul>
+<h2>{datos}</h2>
+<ul>
+    { skills.map(skill =><li class="listado">{skill}</li>) }
+</ul>
+
+{happy && <p>I am happy to be learning Astro!</p>}
+
+{finished && <p>I finished this tutorial!</p>}
+
+{goal === 3 ? <p>My goal is to finish in 3 days.</p> : <p>My goal is not 3 days.</p>}
+
+</Layout>
+<style define:vars={{skillColor}}>
+    h1, h2{
+        color: skyblue;
+        font-size: 6rem;
+    }
+    li{
+        color: aqua;
+    }
+    .listado{
+        color: var(--skillColor) !important;
+    }
+</style>
